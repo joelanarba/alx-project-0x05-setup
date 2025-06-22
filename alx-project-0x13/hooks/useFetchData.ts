@@ -12,16 +12,14 @@ const useFetchData = <T, R extends { prompt: string }>() => {
     setError(null);
     try {
       const resp = await fetch(endpoint, {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify(body),
         headers: {
-          "Content-Type": "application/json",
-        },
+          'Content-Type': 'application/json'
+        }
       });
 
-      if (!resp.ok) {
-        throw new Error("Failed to fetch data");
-      }
+      if (!resp.ok) throw new Error('Failed to fetch data');
 
       const result = await resp.json();
       setResponseData(result);
